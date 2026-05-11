@@ -258,3 +258,4 @@ class _StatBar extends StatelessWidget {
     );
   }
 }
+

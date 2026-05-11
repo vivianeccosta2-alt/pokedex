@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               final pokemon = Pokemon(
                 name: data['name'] as String,
                 types: List<String>.from(data['types'] as List),
-                spriteId: data['spriteId'] as int,
+                spriteUrl: data['spriteUrl'] as String, // Atualiza esta linha
                 level: data['level'] as int,
               );
               return Card(
