@@ -110,7 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (context, index) {
             final data = docs[index].data();
             final docId = docs[index].id;
-                        
+            
+            
             final String urlDaImagem = data.containsKey('spriteUrl') 
                 ? data['spriteUrl'] as String 
                 : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data['spriteId']}.png';

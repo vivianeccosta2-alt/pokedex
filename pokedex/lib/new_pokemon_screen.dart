@@ -12,7 +12,7 @@ class NewPokemonScreen extends StatefulWidget {
 class _NewPokemonScreenState extends State<NewPokemonScreen> {
   late Future<List<String>> _searchFuture;
   final _queryController = TextEditingController();
-  Map<String, dynamic>? _selected; // null = fase 1 (lista); preenchido = fase 2 (detalhes)
+  Map<String, dynamic>? _selected;
   bool _loadingDetails = false;
   
   final _levelController = TextEditingController();
@@ -21,7 +21,7 @@ class _NewPokemonScreenState extends State<NewPokemonScreen> {
   @override
   void initState() {
     super.initState();
-    _searchFuture = fetchPokemonNames(); // Inicializa com os primeiros 20
+    _searchFuture = fetchPokemonNames();
   }
 
   @override
@@ -62,8 +62,8 @@ class _NewPokemonScreenState extends State<NewPokemonScreen> {
     if (_formKey.currentState!.validate() && _selected != null) {
       await FirebaseFirestore.instance.collection('pokemons').add({
         'name': _selected!['name'],
-        'spriteUrl': _selected!['spriteUrl'], // Guardamos a URL diretamente
-        'types': _selected!['types'], // A API já nos dá uma lista de strings
+        'spriteUrl': _selected!['spriteUrl'], 
+        'types': _selected!['types'],
         'level': int.parse(_levelController.text),
       });
 
@@ -85,7 +85,6 @@ class _NewPokemonScreenState extends State<NewPokemonScreen> {
     );
   }
 
-  // FASE 1: Lista de Busca
   Widget _buildList() {
     return Column(
       children: [
@@ -147,7 +146,6 @@ class _NewPokemonScreenState extends State<NewPokemonScreen> {
     );
   }
 
-  // FASE 2: Formulário e Preview
   Widget _buildForm() {
     final typesList = _selected!['types'] as List<String>;
 
